@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Bakery - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            filter: brightness(0.7);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(188, 141, 143, 0.3); /* Rose gold tint */
+            z-index: 0;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #e0bfb8, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .coming-soon {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .notify-btn {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 15px 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .notify-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: #d4af37;
+            transform: translateY(-3px);
+        }
+        
+        /* Form Styles */
+        .form-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .form-container.show {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .submit-btn {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        .submit-btn:hover {
+            background: #e0bfb8;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .success-message {
+            display: none;
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 4rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop id="video-background">
+        <!-- Replace with your actual video file -->
+        <source src="https://cdn.pixabay.com/video/2025/01/04/250784_tiny.mp4 " type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1 class="logo">MIX</h1>
+        <p class="tagline">Here's to fresh starts, new goals, and meals to keep you going.
+            Coming to Abuja</p>
+        <p class="coming-soon">Coming Soon</p>
+        
+        <!-- Success Message -->
+        <div class="success-message">
+            Thank you! We'll notify you when we open.
+        </div>
+        
+        <!-- Notification Form -->
+        <div class="form-container" id="notifyForm">
+            <button class="close-btn" id="closeForm">&times;</button>
+            <h2 style="margin-bottom: 20px;">Get Notified When We Open</h2>
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="notificationForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                </div>
+                <input type="hidden" name="_subject" value="New Notification Request from Mix Bakery">
+                <input type="hidden" name="_replyto">
+                <button type="submit" class="submit-btn">SUBMIT</button>
+            </form>
+        </div>
+        
+        <button class="notify-btn" id="showForm">NOTIFY ME</button>
+        
+        <div class="social-icons">
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <script>
+        // Fallback for mobile devices
+        if (window.innerWidth < 768) {
+            const video = document.getElementById('video-background');
+            video.pause();
+            video.style.display = 'none';
+            document.body.style.background = "url('https://img.freepik.com/free-photo/preparation-baking-kitchen-ingredients-cooking-grocery-accessories_114579-486.jpg?uid=R148061053&ga=GA1.1.784025258.1734678817&semt=ais_hybrid&w=740') no-repeat center center/cover";
+        }
+        
+        // Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const showFormBtn = document.getElementById('showForm');
+            const closeFormBtn = document.getElementById('closeForm');
+            const notifyForm = document.getElementById('notifyForm');
+            const notificationForm = document.getElementById('notificationForm');
+            const successMessage = document.querySelector('.success-message');
+            
+            showFormBtn.addEventListener('click', function() {
+                notifyForm.classList.add('show');
+                showFormBtn.style.display = 'none';
+            });
+            
+            closeFormBtn.addEventListener('click', function() {
+                notifyForm.classList.remove('show');
+                showFormBtn.style.display = 'block';
+            });
+            
+            notificationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(notificationForm);
+                
+                // Send to Formspree
+                fetch(notificationForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Show success message
+                        notifyForm.classList.remove('show');
+                        successMessage.style.display = 'block';
+                        showFormBtn.style.display = 'none';
+                        notificationForm.reset();
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
+                })
+                .catch(error => {
+                    alert('There was a problem with your submission. Please try again.');
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
