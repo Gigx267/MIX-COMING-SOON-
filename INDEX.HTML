@@ -107,16 +107,17 @@
             transform: translateY(-3px);
         }
         
-        /* Form Styles */
+        /* Updated Form Styles */
         .form-container {
             display: none;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 30px;
+            padding: 25px;
             border-radius: 15px;
             width: 90%;
-            max-width: 500px;
-            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-bottom: 1rem;
+            position: relative;
         }
         
         .form-container.show {
@@ -124,26 +125,26 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: left;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
         }
         
         .form-group input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 5px;
             color: #fff;
             font-family: 'Playfair Display', serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         
         .form-group input::placeholder {
@@ -154,8 +155,8 @@
             background: #d4af37;
             color: #000;
             border: none;
-            padding: 12px 30px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            font-size: 0.9rem;
             cursor: pointer;
             border-radius: 30px;
             transition: all 0.3s ease;
@@ -169,12 +170,12 @@
         
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 10px;
+            right: 10px;
             background: none;
             border: none;
             color: #fff;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
         }
         
@@ -183,6 +184,12 @@
             color: #d4af37;
             font-size: 1.2rem;
             margin-bottom: 2rem;
+        }
+        
+        .form-container h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 400;
         }
         
         @media (max-width: 768px) {
@@ -204,7 +211,7 @@
     <!-- Background Video -->
     <video autoplay muted loop id="video-background">
         <!-- Replace with your actual video file -->
-        <source src="https://cdn.pixabay.com/video/2025/01/04/250784_tiny.mp4 " type="video/mp4">
+        <source src="https://cdn.pixabay.com/video/2025/01/04/250784_tiny.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
     
@@ -224,20 +231,19 @@
         <!-- Notification Form -->
         <div class="form-container" id="notifyForm">
             <button class="close-btn" id="closeForm">&times;</button>
-            <h2 style="margin-bottom: 20px;">Get Notified When We Open</h2>
+            <h2>Get Notified When We Open</h2>
             <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="notificationForm">
                 <div class="form-group">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Your email" required>
                 </div>
-               
                 <input type="hidden" name="_subject" value="New Notification Request from Mix Bakery">
                 <input type="hidden" name="_replyto">
-                <button type="submit" class="submit-btn">SUBMIT</button>
+                <button type="submit" class="submit-btn">Notify Me</button>
             </form>
         </div>
         
